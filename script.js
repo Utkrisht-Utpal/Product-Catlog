@@ -2,7 +2,7 @@ import { products } from "./products.js";
 
 const productList = document.getElementById("productList");
 const categoryFilter = document.getElementById("categoryFilter");
-const sortPrice = document.getElementById("sortPrice");
+const sortPrice = document.getElementById("sort");
 
 displayProducts(products);
 
@@ -17,6 +17,7 @@ function displayProducts(list) {
     <h4>${item.name}</h4>
     <p>₹${item.price}</p>
     <p>${item.category}</p>
+    <p>⭐ ${item.rating}</p>
     `;
 
         productList.appendChild(div);
@@ -41,6 +42,18 @@ function updateProducts() {
     if (sortPrice.value === "high") {
         filtered = [...filtered].sort(function (a, b) {
             return b.price - a.price;
+        });
+    }
+
+    if (sortPrice.value === "rhigh") {
+        filtered = [...filtered].sort(function (a, b) {
+            return b.rating - a.rating;
+        });
+    }
+
+    if (sortPrice.value === "rlow") {
+        filtered = [...filtered].sort(function (a, b) {
+            return a.rating - b.rating;
         });
     }
 
