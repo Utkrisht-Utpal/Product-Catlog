@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 6px;
+    margin-right: 10px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.card h4 {
+    margin: 5px 0;
+}
