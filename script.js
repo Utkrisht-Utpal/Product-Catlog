@@ -3,6 +3,7 @@ import { products } from "./products.js";
 const productList = document.getElementById("productList");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortPrice = document.getElementById("sort");
+const search = document.getElementById("search");
 
 displayProducts(products);
 
@@ -24,8 +25,13 @@ function displayProducts(list) {
     });
 }
 
+search.addEventListener('input', () => {
+    updateProducts();
+})
+
 function updateProducts() {
     let filtered = products;
+    const searchValue = search.value.toLowerCase();
 
     if (categoryFilter.value !== "all") {
         filtered = filtered.filter(function (item) {
@@ -54,6 +60,12 @@ function updateProducts() {
     if (sortPrice.value === "rlow") {
         filtered = [...filtered].sort(function (a, b) {
             return a.rating - b.rating;
+        });
+    }
+
+    if (searchValue !== "") {
+        filtered = filtered.filter(function (item) {
+            return item.name.toLowerCase().includes(searchValue);
         });
     }
 
